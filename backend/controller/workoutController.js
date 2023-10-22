@@ -21,9 +21,6 @@ const getWorkout = async(req,res) => {
 
 const createWorkout = async(req,res) => {
     const {title,reps} = req.body
-    if(!mongoose.Types.ObjectId.isValid(title) || !mongoose.Types.ObjectId.isValid(reps)){
-        return res.status(400).json({error: "Invalid input pl check title and reps to add the workout"})
-    }
     try{
         const workout = await Workout.create({title,reps})
         res.status(200).json(workout)
